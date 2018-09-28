@@ -540,7 +540,9 @@ alexa.app = function(name) {
 
     // attach Promise resolve/reject functions to the response object
     response.send = function(exception) {
-      response.prepare();
+      if (!response.response.response.hasOwnProperty('canFulfillIntent')) {
+        response.prepare();
+      }
       var postPromise = Promise.resolve();
       if (typeof self.post == "function" && !postExecuted) {
         postExecuted = true;
