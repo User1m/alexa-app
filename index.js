@@ -578,6 +578,7 @@ alexa.app = function (name) {
         // propagate errors to the error handler
         var prePromise = Promise.resolve();
         if (request.data.request.type !== 'CanFulfillIntentRequest') {
+          // https://forums.developer.amazon.com/questions/176425/canfulfillintentrequest-handling-unspecified-certi.html#
           //skip for CanFulfillIntentRequest
           if (typeof self.pre == "function") {
             prePromise = Promise.resolve(self.pre(request, response, requestType));
