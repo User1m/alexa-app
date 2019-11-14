@@ -577,7 +577,7 @@ alexa.app = function (name) {
         // Call to `.pre` can also throw, so we wrap it in a promise here to
         // propagate errors to the error handler
         var prePromise = Promise.resolve();
-        if (request.data.request.type !== 'CanFulfillIntentRequest') {
+        if (request.data.request && request.data.request.type !== 'CanFulfillIntentRequest') {
           // https://forums.developer.amazon.com/questions/176425/canfulfillintentrequest-handling-unspecified-certi.html#
           //skip for CanFulfillIntentRequest
           if (typeof self.pre == "function") {
